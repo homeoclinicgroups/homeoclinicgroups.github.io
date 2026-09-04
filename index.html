@@ -1,256 +1,1669 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homeo Clinic Groups - Locations & Timings</title>
+
+    <title>Fahad Homeo Clinic | Homeopathic Doctor</title>
+
     <style>
+        /* =========================================
+           CLINIC COLOR PALETTE
+           Based on the supplied clinic cards
+        ========================================= */
+
         :root {
-            --primary-color: #0284c7;
-            --primary-hover: #0369a1;
-            --whatsapp-color: #25d366;
-            --whatsapp-hover: #1da851;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
+            --navy: #24438d;
+            --navy-dark: #1c3677;
+            --sky-blue: #4fa3d6;
+            --yellow: #ffd84d;
+
+            --white: #ffffff;
+            --background: #f5f8fc;
+            --light-blue: #eef5fb;
+
+            --text: #26334d;
+            --muted: #667085;
+
+            --border: #e1e7ef;
+
+            --whatsapp: #25d366;
+            --whatsapp-dark: #1da851;
         }
 
+
+        /* =========================================
+           RESET
+        ========================================= */
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: var(--background);
+            color: var(--text);
             line-height: 1.6;
-            padding: 20px 15px;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
+        a {
+            text-decoration: none;
         }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
 
         header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 10px;
+            background: var(--white);
+
+            border-bottom: 1px solid var(--border);
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
         }
 
-        header h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-        }
+        .navbar {
+            max-width: 1200px;
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
+            margin: auto;
 
-        .branches-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
+            min-height: 75px;
 
-        .branch-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            padding: 25px;
+            padding: 12px 25px;
+
             display: flex;
-            flex-direction: column;
+
+            align-items: center;
+
             justify-content: space-between;
         }
 
-        .branch-card h2 {
-            font-size: 1.4rem;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
+
+        /* LOGO PLACEHOLDER
+           Replace this later with actual logo */
+
+        .logo-placeholder {
+            width: 175px;
+            height: 50px;
+
+            border: 2px dashed var(--sky-blue);
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--navy);
+
+            font-weight: 700;
+            font-size: 13px;
         }
 
-        .info-group {
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--navy);
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--sky-blue);
+        }
+
+        .nav-button {
+            background: var(--navy);
+
+            color: var(--white);
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+        }
+
+        .nav-button:hover {
+            background: var(--navy-dark);
+
+            color: var(--white);
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            background: var(--white);
+
+            min-height: 470px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+
+            width: 100%;
+
+            margin: auto;
+
+            padding: 70px 25px 120px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .hero-small-title {
+            color: var(--sky-blue);
+
+            font-weight: 700;
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            color: var(--navy);
+
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+
+            line-height: 1.05;
+
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: var(--sky-blue);
+        }
+
+        /* New intro paragraph, replaces the doctor name/qualifications block */
+        .hero-intro {
+            color: #000000;
+
+            max-width: 600px;
+
+            font-size: 1.1rem;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            color: var(--muted);
+
+            max-width: 600px;
+
+            font-size: 1.05rem;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .primary-button {
+            background: var(--navy);
+
+            color: white;
+
+            padding: 13px 24px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            display: inline-block;
+        }
+
+        .primary-button:hover {
+            background: var(--navy-dark);
+        }
+
+        .secondary-button {
+            background: white;
+
+            color: var(--navy);
+
+            border: 2px solid var(--navy);
+
+            padding: 11px 22px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            display: inline-block;
+        }
+
+        .secondary-button:hover {
+            background: var(--light-blue);
+        }
+
+
+        /* =========================================
+           HERO DECORATIVE WAVES
+        ========================================= */
+
+        .wave-navy {
+            position: absolute;
+
+            left: -5%;
+            bottom: -105px;
+
+            width: 110%;
+            height: 190px;
+
+            background: var(--navy);
+
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .wave-blue {
+            position: absolute;
+
+            left: -8%;
+            bottom: -135px;
+
+            width: 115%;
+            height: 170px;
+
+            background: var(--sky-blue);
+
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+
+        /* =========================================
+           GENERAL SECTION
+        ========================================= */
+
+        .section {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 80px 25px;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+
+            font-size: 2.3rem;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+
+            max-width: 650px;
+
+            margin: auto;
+        }
+
+
+        /* =========================================
+           DOCTOR
+        ========================================= */
+
+        .doctor-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 40px;
+
+            display: grid;
+
+            grid-template-columns: 180px 1fr;
+
+            gap: 35px;
+
+            align-items: center;
+
+            box-shadow: 0 10px 30px rgba(36, 67, 141, 0.07);
+        }
+
+        .doctor-photo {
+            width: 160px;
+            height: 160px;
+
+            border-radius: 50%;
+
+            background: var(--light-blue);
+
+            border: 5px solid var(--sky-blue);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: var(--navy);
+
+            font-weight: 700;
+
+            font-size: 13px;
+        }
+
+        .doctor-card h3 {
+            color: var(--navy);
+
+            font-size: 2rem;
+
+            margin-bottom: 3px;
+        }
+
+        .doctor-title {
+            color: var(--sky-blue);
+
+            font-size: 1.15rem;
+
+            font-weight: 600;
+
             margin-bottom: 15px;
         }
 
-        .info-group strong {
-            display: block;
-            color: var(--primary-color);
-            font-size: 0.9rem;
+        .qualifications {
+            display: inline-block;
+
+            background: var(--light-blue);
+
+            color: var(--navy);
+
+            padding: 9px 15px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================
+           BRANCHES
+        ========================================= */
+
+        .branches-section {
+            background: var(--white);
+        }
+
+        .branches {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 30px;
+        }
+
+        .branch-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow: 0 10px 30px rgba(36, 67, 141, 0.08);
+
+            transition: 0.25s;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: 0 15px 35px rgba(36, 67, 141, 0.13);
+        }
+
+
+        /* Branch header */
+
+        .branch-header {
+            background: var(--navy);
+
+            color: white;
+
+            padding: 25px 28px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .branch-header::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 70px;
+
+            right: -40px;
+            bottom: -40px;
+
+            background: var(--sky-blue);
+
+            border-radius: 50%;
+        }
+
+        .branch-number {
+            color: var(--yellow);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+
+            letter-spacing: 1px;
         }
 
-        .info-group p {
-            color: var(--text-dark);
-            font-size: 0.95rem;
+        .branch-header h3 {
+            font-size: 1.55rem;
+
+            margin-top: 3px;
+
+            position: relative;
+
+            z-index: 2;
         }
+
+
+        /* Branch content */
+
+        .branch-content {
+            padding: 28px;
+        }
+
+        .info-row {
+            display: flex;
+
+            gap: 14px;
+
+            margin-bottom: 23px;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+
+            min-width: 42px;
+
+            border-radius: 11px;
+
+            background: var(--navy);
+
+            color: var(--yellow);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+        }
+
+        .info-content h4 {
+            color: var(--navy);
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.6px;
+
+            margin-bottom: 3px;
+        }
+
+        .info-content p {
+            color: var(--text);
+
+            font-size: 15px;
+        }
+
+
+        /* Timings */
+
+        .timings-box {
+            background: var(--light-blue);
+
+            border-left: 4px solid var(--sky-blue);
+
+            border-radius: 7px;
+
+            padding: 14px 16px;
+
+            font-size: 14px;
+        }
+
+        .timings-box strong {
+            color: var(--navy);
+        }
+
+        .closed {
+            color: #b42318;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           MAP
+        ========================================= */
 
         .map-container {
             width: 100%;
-            height: 200px;
-            border-radius: 8px;
+
+            height: 250px;
+
+            margin-top: 25px;
+
+            border-radius: 12px;
+
             overflow: hidden;
-            margin: 15px 0;
-            border: 1px solid var(--border-color);
+
+            border: 1px solid var(--border);
+
+            background: #edf2f7;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .map-placeholder {
+            padding: 20px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .map-placeholder strong {
+            color: var(--navy);
+
+            display: block;
+
+            margin-bottom: 5px;
         }
 
         .map-container iframe {
             width: 100%;
             height: 100%;
+
             border: 0;
         }
 
-        .btn-whatsapp {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background-color: var(--whatsapp-color);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px;
+
+        /* =========================================
+           BRANCH BUTTONS
+        ========================================= */
+
+        .branch-buttons {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            margin-top: 18px;
+        }
+
+        .branch-button {
+            padding: 12px 10px;
+
             border-radius: 8px;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
 
-        .btn-whatsapp:hover {
-            background-color: var(--whatsapp-hover);
-        }
-
-        .social-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
             text-align: center;
+
+            font-weight: 700;
+
+            font-size: 14px;
         }
 
-        .social-section h3 {
-            margin-bottom: 15px;
-            color: var(--text-dark);
+        .directions-button {
+            background: var(--navy);
+
+            color: white;
         }
 
-        .social-links {
+        .directions-button:hover {
+            background: var(--navy-dark);
+        }
+
+        .whatsapp-button {
+            background: var(--whatsapp);
+
+            color: white;
+        }
+
+        .whatsapp-button:hover {
+            background: var(--whatsapp-dark);
+        }
+
+
+        /* =========================================
+           REVIEWS
+        ========================================= */
+
+        .reviews-section {
+            background: var(--light-blue);
+        }
+
+        .reviews-widget-wrap {
+            max-width: 800px;
+
+            margin: 0 auto 35px;
+        }
+
+        .google-review-button {
+            display: block;
+
+            width: max-content;
+
+            margin: 0 auto;
+
+            background: white;
+
+            color: var(--navy);
+
+            border: 2px solid var(--navy);
+
+            padding: 13px 26px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+        }
+
+        .google-review-button:hover {
+            background: var(--navy);
+
+            color: white;
+        }
+
+
+        /* =========================================
+           CONTACT
+        ========================================= */
+
+        .contact-section {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 0 25px 80px;
+        }
+
+        .contact-box {
+            background: var(--navy);
+
+            border-radius: 18px;
+
+            padding: 45px;
+
+            color: white;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .contact-box::after {
+            content: "";
+
+            position: absolute;
+
+            right: -80px;
+            bottom: -100px;
+
+            width: 300px;
+            height: 200px;
+
+            background: var(--sky-blue);
+
+            border-radius: 50%;
+        }
+
+        .contact-box h2 {
+            font-size: 2rem;
+
+            margin-bottom: 8px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .contact-box > p {
+            opacity: 0.9;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .contact-details {
             display: flex;
+
             justify-content: center;
-            gap: 15px;
+
+            gap: 35px;
+
             flex-wrap: wrap;
+
+            margin-top: 25px;
+
+            position: relative;
+
+            z-index: 2;
         }
 
-        .social-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--primary-color);
-            text-decoration: none;
+        .contact-item {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 3px;
+        }
+
+        .contact-label {
+            color: var(--yellow);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+        .contact-item a {
+            color: white;
+
             font-weight: 600;
-            transition: all 0.2s;
         }
 
-        .social-btn:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
-        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
 
         footer {
+            background: var(--navy-dark);
+
+            color: rgba(255, 255, 255, 0.75);
+
+            padding: 30px 20px;
+
             text-align: center;
-            margin-top: 40px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+
+            font-size: 14px;
         }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                display: none;
+            }
+
+            .branches {
+                grid-template-columns: 1fr;
+            }
+
+            .doctor-card {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                justify-items: center;
+            }
+
+            .doctor-card p {
+                text-align: center;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero-content {
+                text-align: center;
+
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero-intro,
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .logo-placeholder {
+                width: 145px;
+            }
+
+            .section {
+                padding: 55px 15px;
+            }
+
+            .contact-section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .branch-content {
+                padding: 20px;
+            }
+
+            .branch-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .doctor-card {
+                padding: 25px 20px;
+            }
+
+            .contact-box {
+                padding: 35px 20px;
+            }
+
+            .contact-details {
+                gap: 20px;
+            }
+        }
+
     </style>
 </head>
+
+
 <body>
 
-<div class="container">
-    <header>
-        <h1>Homeo Clinic Groups</h1>
-        <p>Select your nearest branch for appointments, contact details, and maps.</p>
-    </header>
 
-    <div class="branches-grid">
-        <div class="branch-card">
-            <div>
-                <h2>Branch 1 - North Karachi</h2>
-                
-                <div class="info-group">
-                    <strong>Address</strong>
-                    <p>Shop #12, Block A, Main Road, North Karachi, Pakistan</p>
-                </div>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-                <div class="info-group">
-                    <strong>Clinic Timings</strong>
-                    <p>Mon - Sat: 5:00 PM – 10:00 PM<br>Sunday: Closed</p>
-                </div>
+<header>
 
-                <div class="info-group">
-                    <strong>Phone / Contact</strong>
-                    <p>+92 300 0000000</p>
-                </div>
+    <div class="navbar">
 
-                <div class="map-container">
-                    <iframe src="https://maps.google.com/maps?q=North%20Karachi&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
-                </div>
-            </div>
+        <!--
+            LOGO PLACEHOLDER
 
-            <a href="https://wa.me/923000000000?text=Hello,%20I%20want%20to%20book%20an%20appointment%20at%20Branch%201." class="btn-whatsapp" target="_blank">Book via WhatsApp</a>
+            Your logo is not finalized yet.
+            Replace this div later with your actual logo.
+        -->
+
+        <div class="logo-placeholder">
+            YOUR LOGO
         </div>
 
-        <div class="branch-card">
-            <div>
-                <h2>Branch 2 - Central Branch</h2>
-                
-                <div class="info-group">
-                    <strong>Address</strong>
-                    <p>Suite #405, Medical Center Plaza, Commercial Area, Karachi, Pakistan</p>
-                </div>
 
-                <div class="info-group">
-                    <strong>Clinic Timings</strong>
-                    <p>Mon - Sat: 11:00 AM – 4:00 PM<br>Sunday: By Appointment Only</p>
-                </div>
+        <nav>
 
-                <div class="info-group">
-                    <strong>Phone / Contact</strong>
-                    <p>+92 300 1111111</p>
-                </div>
+            <a href="#home">Home</a>
 
-                <div class="map-container">
-                    <iframe src="https://maps.google.com/maps?q=Karachi&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
-                </div>
-            </div>
+            <a href="#doctor">Doctor</a>
 
-            <a href="https://wa.me/923001111111?text=Hello,%20I%20want%20to%20book%20an%20appointment%20at%20Branch%202." class="btn-whatsapp" target="_blank">Book via WhatsApp</a>
-        </div>
+            <a href="#branches">Branches</a>
+
+            <a href="#reviews">Reviews</a>
+
+            <a href="#contact">Contact</a>
+
+            <a
+                href="#branches"
+                class="nav-button">
+                Book Appointment
+            </a>
+
+        </nav>
+
     </div>
 
-    <div class="social-section">
-        <h3>Connect With Us Online</h3>
-        <div class="social-links">
-            <a href="https://facebook.com" class="social-btn" target="_blank">Facebook</a>
-            <a href="https://instagram.com" class="social-btn" target="_blank">Instagram</a>
-            <a href="https://youtube.com" class="social-btn" target="_blank">YouTube</a>
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="home">
+
+
+    <div class="hero-content">
+
+        <div class="hero-small-title">
+            FAHAD HOMEO CLINIC
         </div>
+
+
+        <h1>
+            Homeopathic
+            <span>Care</span>
+        </h1>
+
+
+        <!--
+            Intro paragraph
+            (previously the doctor name + qualifications block)
+        -->
+
+        <p class="hero-intro">
+
+            Gentle, natural treatment for lasting wellness —
+            trusted by families across the city for
+            safe and effective homeopathic care.
+
+        </p>
+
+
+        <p class="hero-description">
+
+            Homeopathic Doctor providing consultation
+            through our two clinic branches.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#branches"
+                class="primary-button">
+
+                View Our Branches
+
+            </a>
+
+
+            <a
+                href="tel:03452464421"
+                class="secondary-button">
+
+                Call 03452464421
+
+            </a>
+
+        </div>
+
     </div>
 
-    <footer>
-        <p>&copy; Homeo Clinic Groups. All rights reserved.</p>
-    </footer>
-</div>
+
+    <!-- Decorative curves -->
+
+    <div class="wave-blue"></div>
+
+    <div class="wave-navy"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DOCTOR
+===================================================== -->
+
+<section
+    class="section"
+    id="doctor">
+
+
+    <div class="section-heading">
+
+        <h2>
+            Our Doctor
+        </h2>
+
+        <p>
+            Meet the homeopathic doctor associated with
+            Fahad Homeo Clinic.
+        </p>
+
+    </div>
+
+
+    <div class="doctor-card">
+
+
+        <!--
+            PHOTO PLACEHOLDER
+
+            Add doctor's photo later if required.
+        -->
+
+        <div class="doctor-photo">
+
+            DOCTOR<br>
+            PHOTO
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Fariha Sultana
+            </h3>
+
+
+            <div class="doctor-title">
+                Homeopathic Doctor
+            </div>
+
+
+            <div class="qualifications">
+
+                DHMS &nbsp; | &nbsp;
+                RHMP &nbsp; | &nbsp;
+                MBA &nbsp; | &nbsp;
+                M.Phil
+
+            </div>
+
+
+            <p>
+
+                For consultation and appointments,
+                please contact the clinic using the
+                contact information below or visit
+                one of our branches.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BRANCHES
+===================================================== -->
+
+<section
+    class="branches-section"
+    id="branches">
+
+
+    <div class="section">
+
+
+        <div class="section-heading">
+
+            <h2>
+                Our Branches
+            </h2>
+
+            <p>
+                Visit the branch most convenient for you.
+                Check the clinic timings and location
+                before visiting.
+            </p>
+
+        </div>
+
+
+
+        <div class="branches">
+
+
+            <!-- =================================================
+                 BRANCH 1
+            ================================================== -->
+
+            <article class="branch-card">
+
+
+                <div class="branch-header">
+
+                    <div class="branch-number">
+                        Branch 1
+                    </div>
+
+                    <h3>
+                        Fahad Homeo Clinic
+                    </h3>
+
+                </div>
+
+
+                <div class="branch-content">
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="info-row">
+
+                        <div class="info-icon">
+                            📍
+                        </div>
+
+                        <div class="info-content">
+
+                            <h4>
+                                Address
+                            </h4>
+
+                            <p>
+                                Shop No. 32,Sector 11 C
+                                Iqbal Plaza,
+                                Nagan Chowrangi 
+                                 North Karachi, Karachi. 
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TIMINGS -->
+
+                    <div class="info-row">
+
+                        <div class="info-icon">
+                            🕐
+                        </div>
+
+                        <div class="info-content">
+
+                            <h4>
+                                Clinic Timings
+                            </h4>
+
+
+                            <div class="timings-box">
+
+                                <strong>
+                                    Monday – Thursday
+                                </strong>
+
+                                <br>
+
+                                06:00 PM – 08:00 PM
+
+
+                                <br><br>
+
+
+                                <strong>
+                                    Saturday – Sunday
+                                </strong>
+
+                                <br>
+
+                                10:00 AM – 01:00 PM
+
+
+                                <br><br>
+
+
+                                <span class="closed">
+                                    Friday: Closed
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MAP -->
+
+                    <div class="map-container">
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.6259114428176!2d67.06298220865801!3d24.96768747776701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb34136798bc791%3A0xfdda05a7ae06beff!2sFahad%20Homeo%20Clinic!5e1!3m2!1sen!2s!4v1788562129734!5m2!1sen!2s"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="branch-buttons">
+
+
+                        <!--
+                            Replace # with the actual
+                            Google Maps directions link later.
+                        -->
+
+                        <a
+                            href="https://maps.app.goo.gl/EAF3kDJRFXYXH9Cp9"
+                            class="branch-button directions-button">
+
+                            📍 Get Directions
+
+                        </a>
+
+
+                        <a
+                            href="https://wa.me/923452464421?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Fahad%20Homeo%20Clinic%20%28Branch%201%29."
+                            target="_blank"
+                            class="branch-button whatsapp-button">
+
+                            💬 WhatsApp
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 BRANCH 2
+            ================================================== -->
+
+            <article class="branch-card">
+
+
+                <div class="branch-header">
+
+                    <div class="branch-number">
+                        Branch 2
+                    </div>
+
+                    <h3>
+                        Fariha Homeo Clinic
+                    </h3>
+
+                </div>
+
+
+                <div class="branch-content">
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="info-row">
+
+                        <div class="info-icon">
+                            📍
+                        </div>
+
+                        <div class="info-content">
+
+                            <h4>
+                                Address
+                            </h4>
+
+                            <p>
+                                Shop No. 14,
+                                Rabia Flower,
+                                Gulshan Ispahani Road.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TIMINGS -->
+
+                    <div class="info-row">
+
+                        <div class="info-icon">
+                            🕐
+                        </div>
+
+                        <div class="info-content">
+
+                            <h4>
+                                Clinic Timings
+                            </h4>
+
+
+                            <div class="timings-box">
+
+                                <strong>
+                                    Monday – Thursday
+                                </strong>
+
+                                <br>
+
+                                10:00 AM – 01:00 PM
+
+
+                                <br><br>
+
+
+                                <span class="closed">
+                                    Friday – Sunday: Closed
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MAP -->
+
+                    <div class="map-container">
+
+                        <iframe
+                            src="https://www.google.com/maps?q=Rabia+Flower+Gulshan+Ispahani+Road+Karachi&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="branch-buttons">
+
+
+                        <a
+                            href="#"
+                            class="branch-button directions-button">
+
+                            📍 Get Directions
+
+                        </a>
+
+
+                        <a
+                            href="https://wa.me/923452464421?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Fariha%20Homeo%20Clinic%20%28Branch%202%29."
+                            target="_blank"
+                            class="branch-button whatsapp-button">
+
+                            💬 WhatsApp
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REVIEWS
+===================================================== -->
+
+<section
+    class="section reviews-section"
+    id="reviews">
+
+
+    <div class="section-heading">
+
+        <h2>
+            What Our Patients Say
+        </h2>
+
+        <p>
+            Real feedback from patients, straight from Google.
+        </p>
+
+    </div>
+
+
+    <!--
+        LEAVE A REVIEW LINK
+
+        This currently points to a Google search for the clinic name,
+        which is a safe default — it will surface your Google Business
+        listing where visitors can click through to write a review.
+
+        For a true one-click "write a review" button, replace the href
+        below with your exact review link. To get it: open your Google
+        Business Profile > Ask for reviews > Copy link, and paste that
+        URL here instead.
+    -->
+
+    <a
+        href="https://www.google.com/search?q=Fahad+Homeo+Clinic+Nagan+Chowrangi+reviews"
+        target="_blank"
+        class="google-review-button"
+        style="margin-bottom: 35px;">
+
+        ⭐ Leave Us a Review on Google
+
+    </a>
+
+
+    <!-- Shapo Google Reviews widget -->
+
+    <div class="reviews-widget-wrap">
+
+        <div id="shapo-widget-cbc68a95a925ee17ed6e"></div>
+        <script id="shapo-embed-js" type="text/javascript" src="https://cdn.shapo.io/js/embed.js" defer></script>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    class="contact-section"
+    id="contact">
+
+
+    <div class="contact-box">
+
+        <h2>
+            Contact Us
+        </h2>
+
+
+        <p>
+            For appointments and clinic information,
+            please contact us.
+        </p>
+
+
+        <div class="contact-details">
+
+
+            <!-- PHONE -->
+
+            <div class="contact-item">
+
+                <div class="contact-label">
+                    Phone
+                </div>
+
+                <a href="tel:03452464421">
+                    03452464421
+                </a>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="contact-item">
+
+                <div class="contact-label">
+                    Email
+                </div>
+
+                <a href="mailto:homeoclinicgroups@gmail.com">
+                    homeoclinicgroups@gmail.com
+                </a>
+
+            </div>
+
+
+            <!-- WHATSAPP -->
+
+            <div class="contact-item">
+
+                <div class="contact-label">
+                    WhatsApp
+                </div>
+
+                <a
+                    href="https://wa.me/923452464421"
+                    target="_blank">
+
+                    Message Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+
+        <strong>
+            Fahad Homeo Clinic
+        </strong>
+
+        <br>
+
+        Fariha Sultana — Homeopathic Doctor
+
+        <br>
+
+        DHMS | RHMP | MBA | M.Phil
+
+        <br><br>
+
+        © 2026 Fahad Homeo Clinic.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
 
 </body>
+
 </html>
