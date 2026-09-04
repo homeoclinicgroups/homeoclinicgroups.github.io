@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeo Clinic Groups - Locations & Timings</title>
+    <style>
+        :root {
+            --primary-color: #0284c7;
+            --primary-hover: #0369a1;
+            --whatsapp-color: #25d366;
+            --whatsapp-hover: #1da851;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 10px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .branch-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .branch-card h2 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .info-group {
+            margin-bottom: 15px;
+        }
+
+        .info-group strong {
+            display: block;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-group p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--whatsapp-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        .social-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .social-section h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Homeo Clinic Groups</h1>
+        <p>Select your nearest branch for appointments, contact details, and maps.</p>
+    </header>
+
+    <div class="branches-grid">
+        <div class="branch-card">
+            <div>
+                <h2>Branch 1 - North Karachi</h2>
+                
+                <div class="info-group">
+                    <strong>Address</strong>
+                    <p>Shop #12, Block A, Main Road, North Karachi, Pakistan</p>
+                </div>
+
+                <div class="info-group">
+                    <strong>Clinic Timings</strong>
+                    <p>Mon - Sat: 5:00 PM – 10:00 PM<br>Sunday: Closed</p>
+                </div>
+
+                <div class="info-group">
+                    <strong>Phone / Contact</strong>
+                    <p>+92 300 0000000</p>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=North%20Karachi&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <a href="https://wa.me/923000000000?text=Hello,%20I%20want%20to%20book%20an%20appointment%20at%20Branch%201." class="btn-whatsapp" target="_blank">Book via WhatsApp</a>
+        </div>
+
+        <div class="branch-card">
+            <div>
+                <h2>Branch 2 - Central Branch</h2>
+                
+                <div class="info-group">
+                    <strong>Address</strong>
+                    <p>Suite #405, Medical Center Plaza, Commercial Area, Karachi, Pakistan</p>
+                </div>
+
+                <div class="info-group">
+                    <strong>Clinic Timings</strong>
+                    <p>Mon - Sat: 11:00 AM – 4:00 PM<br>Sunday: By Appointment Only</p>
+                </div>
+
+                <div class="info-group">
+                    <strong>Phone / Contact</strong>
+                    <p>+92 300 1111111</p>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=Karachi&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <a href="https://wa.me/923001111111?text=Hello,%20I%20want%20to%20book%20an%20appointment%20at%20Branch%202." class="btn-whatsapp" target="_blank">Book via WhatsApp</a>
+        </div>
+    </div>
+
+    <div class="social-section">
+        <h3>Connect With Us Online</h3>
+        <div class="social-links">
+            <a href="https://facebook.com" class="social-btn" target="_blank">Facebook</a>
+            <a href="https://instagram.com" class="social-btn" target="_blank">Instagram</a>
+            <a href="https://youtube.com" class="social-btn" target="_blank">YouTube</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Homeo Clinic Groups. All rights reserved.</p>
+    </footer>
+</div>
+
+</body>
+</html>
