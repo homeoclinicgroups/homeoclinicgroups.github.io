@@ -806,11 +806,70 @@
             }
         }
 
+        /* =========================================
+           PRELOADER
+        ========================================= */
+
+        body.is-loading {
+            overflow: hidden;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+
+            background: var(--white);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .preloader-logo {
+            width: 160px;
+            height: 160px;
+
+            object-fit: contain;
+
+            animation: preloader-pulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes preloader-pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
     </style>
 </head>
 
 
-<body>
+<body class="is-loading">
+
+
+<!-- =====================================================
+     PRELOADER
+===================================================== -->
+
+<div id="preloader">
+    <img
+        src="images/Copy_of_F.H.C_logo-removebg-preview.png"
+        alt="Fahad Homeo Clinic Logo"
+        class="preloader-logo">
+</div>
 
 
 <!-- =====================================================
@@ -1272,6 +1331,14 @@
 
 
 <script>
+    window.addEventListener('load', function () {
+        var preloader = document.getElementById('preloader');
+        setTimeout(function () {
+            preloader.classList.add('hide');
+            document.body.classList.remove('is-loading');
+        }, 900);
+    });
+
     document.addEventListener('DOMContentLoaded', function () {
 
         var sections = document.querySelectorAll('.fade-in-section');
