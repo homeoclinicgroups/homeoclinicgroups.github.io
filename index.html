@@ -83,7 +83,7 @@
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1500;
         }
 
         .navbar {
@@ -139,6 +139,78 @@
 
         .nav-button.active-link {
             color: var(--white);
+        }
+
+        /* =========================================
+           HAMBURGER (mobile menu toggle)
+        ========================================= */
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+
+            width: 40px;
+            height: 40px;
+
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            z-index: 1200;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+
+            background: var(--navy);
+            border-radius: 2px;
+
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+
+            background: rgba(15, 25, 50, 0.55);
+
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            z-index: 1040;
+        }
+
+        .nav-backdrop.active {
+            display: block;
+            opacity: 1;
+        }
+
+        body.nav-locked {
+            overflow: hidden;
+        }
+
+        /* =========================================
+           SCROLL OFFSET FOR STICKY HEADER
+        ========================================= */
+
+        #home, #about, #doctor, #expertise, #branches, #reviews, #contact {
+            scroll-margin-top: 110px;
         }
 
         /* =========================================
@@ -726,8 +798,62 @@
 
         @media (max-width: 850px) {
 
+            .hamburger {
+                display: flex;
+            }
+
             nav {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+
+                height: 100vh;
+                width: min(78%, 320px);
+
+                background: var(--navy);
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 26px;
+
+                padding: 40px 34px;
+
+                transform: translateX(100%);
+                transition: transform 0.35s ease;
+
+                z-index: 1100;
+
+                box-shadow: -12px 0 30px rgba(0, 0, 0, 0.25);
+            }
+
+            nav.nav-open {
+                transform: translateX(0);
+            }
+
+            nav a {
+                color: white;
+                font-size: 18px;
+            }
+
+            nav a:hover,
+            nav a.active-link {
+                color: var(--yellow);
+            }
+
+            .nav-button {
+                background: var(--yellow);
+                color: var(--navy-dark);
+                margin-top: 10px;
+            }
+
+            .nav-button:hover {
+                background: white;
+            }
+
+            .nav-button.active-link {
+                color: var(--navy-dark);
             }
 
             .branches {
@@ -884,7 +1010,7 @@
             <img src="images/Copy_of_F.H.C_logo-removebg-preview.png" alt="Fahad Homeo Clinic Logo" class="site-logo">
         </div>
 
-        <nav>
+        <nav id="siteNav">
 
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -898,9 +1024,17 @@
 
         </nav>
 
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
     </div>
 
 </header>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 
 
@@ -1027,13 +1161,8 @@
     <div class="expertise-grid">
 
         <div class="expertise-card">
-            <div class="expertise-icon"><i class="fa-solid fa-allergies" aria-hidden="true"></i></div>
-            <span>Allergies</span>
-        </div>
-
-        <div class="expertise-card">
             <div class="expertise-icon"><i class="fa-solid fa-hand-dots" aria-hidden="true"></i></div>
-            <span>Skin Conditions</span>
+            <span>Allergies &amp; Skin Conditions</span>
         </div>
 
         <div class="expertise-card">
@@ -1053,7 +1182,7 @@
 
         <div class="expertise-card">
             <div class="expertise-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></div>
-            <span>Stress-Related Conditions</span>
+            <span>Stress &amp; Mental Wellness</span>
         </div>
 
         <div class="expertise-card">
@@ -1073,12 +1202,12 @@
 
         <div class="expertise-card">
             <div class="expertise-icon"><i class="fa-solid fa-shield-virus" aria-hidden="true"></i></div>
-            <span>Low Immunity</span>
+            <span>Immunity &amp; General Wellness</span>
         </div>
 
         <div class="expertise-card">
             <div class="expertise-icon"><i class="fa-solid fa-child" aria-hidden="true"></i></div>
-            <span>Children's Ailments</span>
+            <span>Pediatric Care</span>
         </div>
 
         <div class="expertise-card">
@@ -1089,6 +1218,36 @@
         <div class="expertise-card">
             <div class="expertise-icon"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></div>
             <span>Hormonal Imbalances</span>
+        </div>
+
+        <div class="expertise-card">
+            <div class="expertise-icon"><i class="fa-solid fa-weight-scale" aria-hidden="true"></i></div>
+            <span>Weight Management</span>
+        </div>
+
+        <div class="expertise-card">
+            <div class="expertise-icon"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i></div>
+            <span>Liver &amp; Gallbladder Disorders</span>
+        </div>
+
+        <div class="expertise-card">
+            <div class="expertise-icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></div>
+            <span>Renal (Kidney) Health</span>
+        </div>
+
+        <div class="expertise-card">
+            <div class="expertise-icon"><i class="fa-solid fa-spa" aria-hidden="true"></i></div>
+            <span>Skin &amp; Beauty Care</span>
+        </div>
+
+        <div class="expertise-card">
+            <div class="expertise-icon"><i class="fa-solid fa-mars" aria-hidden="true"></i></div>
+            <span>Men's Health</span>
+        </div>
+
+        <div class="expertise-card">
+            <div class="expertise-icon"><i class="fa-solid fa-comb" aria-hidden="true"></i></div>
+            <span>Hair Care &amp; Restoration</span>
         </div>
 
     </div>
@@ -1279,7 +1438,7 @@
      CONTACT
 ===================================================== -->
 
-<section class="contact-section " id="contact">
+<section class="contact-section" id="contact">
 
     <div class="contact-box">
 
@@ -1374,6 +1533,40 @@
 
         window.addEventListener('scroll', onScroll);
         onScroll();
+
+        var hamburger = document.getElementById('hamburgerBtn');
+        var siteNav = document.getElementById('siteNav');
+        var backdrop = document.getElementById('navBackdrop');
+
+        function openMenu() {
+            hamburger.classList.add('active');
+            siteNav.classList.add('nav-open');
+            backdrop.classList.add('active');
+            document.body.classList.add('nav-locked');
+            hamburger.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            siteNav.classList.remove('nav-open');
+            backdrop.classList.remove('active');
+            document.body.classList.remove('nav-locked');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        hamburger.addEventListener('click', function () {
+            if (siteNav.classList.contains('nav-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        backdrop.addEventListener('click', closeMenu);
+
+        siteNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
 
     });
 </script>
